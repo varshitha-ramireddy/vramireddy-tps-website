@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health First Solutions - Patient Registration</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="banner">
+      <img src="./logo.png" alt="company logo" class="logo" />
+      <h1>Health First Solutions</h1>
+      <div class="tagline">
+        Providing Compassionate and Reliable Healthcare Services
+      </div>
+      <h4>Date: <span id="time"></span></h4>
+    </div>
+
+    <div class="form">
+      <form id="registrationForm">
+        <table class="formtable">
+          <tr>
+            <th colspan="4"><h2>Patient Registration Form</h2></th>
+          </tr>
+          <!-- Name Fields -->
+          <tr>
+            <td><label for="fname">First Name</label></td>
+            <td>
+              <input
+                type="text"
+                name="fname"
+                id="fname"
+                maxlength="30"
+                placeholder="First Name"
+                title="Enter your first name (1-30 letters, apostrophes, dashes allowed)"
+                pattern="^[A-Za-z'-]{1,30}$"
+                required
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                name="mname"
+                id="mname"
+                maxlength="1"
+                placeholder="M.I."
+                title="Middle initial (1 letter, optional)"
+                pattern="^[A-Za-z]?$"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                name="lname"
+                id="lname"
+                maxlength="30"
+                placeholder="Last Name"
+                title="Enter your last name (1-30 letters, apostrophes, dashes, numbers 2-5 allowed)"
+                pattern="^[A-Za-z'-2-5]{1,30}$"
+                required
+              />
+            </td>
+          </tr>
+          <!-- Date of Birth -->
+          <tr>
+            <td><label for="dob">Date of Birth</label></td>
+            <td colspan="3">
+              <input
+                type="date"
+                name="dob"
+                id="dob"
+                title="Date of birth must be within the last 120 years and not in the future"
+                required
+              />
+            </td>
+          </tr>
+          <!-- Social Security Number (SSN) -->
+          <tr>
+            <td><label for="ssn">Social Security Number</label></td>
+            <td colspan="3">
+              <input
+                type="password"
+                name="ssn"
+                id="ssn"
+                placeholder="123-45-6789"
+                title="SSN format: 123-45-6789"
+                pattern="\d{3}-\d{2}-\d{4}"
+                required
+              />
+            </td>
+          </tr>
+          <!-- User ID -->
+          <tr>
+            <td><label for="userid">User ID</label></td>
+            <td colspan="3">
+              <input
+                type="text"
+                name="userid"
+                id="userid"
+                placeholder="User ID"
+                title="User ID must start with a letter and contain only letters, numbers, underscores, or hyphens"
+                required
+              />
+            </td>
+            <td><span class="error-message" id="useridError"></span></td>
+          </tr>
+          <!-- Password Fields -->
+          <tr>
+            <td><label for="password">Password</label></td>
+            <td colspan="3">
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+                <button type="button" onclick="togglePassword('password')">
+                  Show/Hide
+                </button>
+              </div>
+            </td>
+            <td><span class="error-message" id="passwordError"></span></td>
+          </tr>
+          <tr>
+            <td><label for="confirm_password">Confirm Password</label></td>
+            <td colspan="3">
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  name="confirm_password"
+                  id="confirm_password"
+                  placeholder="Confirm Password"
+                  required
+                />
+                <button
+                  type="button"
+                  onclick="togglePassword('confirm_password')"
+                >
+                  Show/Hide
+                </button>
+              </div>
+            </td>
+            <td>
+              <span class="error-message" id="confirmPasswordError"></span>
+            </td>
+          </tr>
+          <!-- Contact Info -->
+          <tr>
+            <td><label for="email">Email Address</label></td>
+            <td colspan="3">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="name@domain.tld"
+                title="Enter a valid email address"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="phone">Phone Number</label></td>
+            <td colspan="3">
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="000-000-0000"
+                title="Phone number format: 000-000-0000"
+                pattern="\d{3}-\d{3}-\d{4}"
+                required
+              />
+            </td>
+          </tr>
+          <!-- Address Fields -->
+          <tr>
+            <td><label for="address1">Address Line 1</label></td>
+            <td colspan="3">
+              <input
+                type="text"
+                name="address1"
+                id="address1"
+                maxlength="30"
+                placeholder="Address"
+                title="Enter your address (2-30 characters)"
+                pattern=".{2,30}"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="address2">Address Line 2</label></td>
+            <td colspan="3">
+              <input
+                type="text"
+                name="address2"
+                id="address2"
+                maxlength="30"
+                placeholder="Apt, Suite, etc."
+                title="Optional, 2-30 characters"
+                pattern=".{2,30}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="state">State</label></td>
+            <td colspan="3">
+              <select
+                name="state"
+                id="state"
+                title="Select your state"
+                required
+              >
+                <option value="">Select State</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="city">City</label></td>
+            <td colspan="3">
+              <input
+                type="text"
+                name="city"
+                id="city"
+                maxlength="30"
+                placeholder="City"
+                title="Enter your city (2-30 characters)"
+                pattern="^[A-Za-z\s'-]{2,30}$"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="zip">Zip Code</label></td>
+            <td colspan="3">
+              <input
+                type="text"
+                name="zip"
+                id="zip"
+                maxlength="10"
+                placeholder="Zip Code"
+                title="Enter your zip code (5 digits or zip+4 format)"
+                pattern="\d{5}(-\d{4})?"
+                required
+              />
+            </td>
+          </tr>
+          <!-- Additional Fields -->
+          <tr>
+            <td>Have you had:</td>
+            <td colspan="3">
+              <input type="checkbox" name="condition" value="chickenpox" />
+              Chicken Pox
+              <input type="checkbox" name="condition" value="measles" /> Measles
+              <input type="checkbox" name="condition" value="covid19" />
+              Covid-19
+              <input type="checkbox" name="condition" value="smallpox" /> Small
+              Pox
+              <input type="checkbox" name="condition" value="tetanus" /> Tetanus
+            </td>
+          </tr>
+
+          <tr>
+            <td>Gender</td>
+            <td colspan="3">
+              <input type="radio" name="gender" value="male" /> Male
+              <input type="radio" name="gender" value="female" /> Female
+              <input type="radio" name="gender" value="other" /> Other
+            </td>
+          </tr>
+
+          <tr>
+            <td>Are you vaccinated?</td>
+            <td colspan="3">
+              <input type="radio" name="vaccinated" value="yes" /> Yes
+              <input type="radio" name="vaccinated" value="no" /> No
+            </td>
+          </tr>
+
+          <tr>
+            <td>Do you have insurance?</td>
+            <td colspan="3">
+              <input type="radio" name="insurance" value="yes" /> Yes
+              <input type="radio" name="insurance" value="no" /> No
+            </td>
+          </tr>
+          <tr>
+            <td>Healthcare Needs</td>
+            <td colspan="3">
+              <input
+                type="checkbox"
+                name="healthcare_needs"
+                value="preventive_care"
+              />
+              Preventive Care<br />
+              <input
+                type="checkbox"
+                name="healthcare_needs"
+                value="diagnostic_services"
+              />
+              Diagnostic Services<br />
+              <input
+                type="checkbox"
+                name="healthcare_needs"
+                value="treatment"
+              />
+              Treatment<br />
+              <input
+                type="checkbox"
+                name="healthcare_needs"
+                value="wellness_programs"
+              />
+              Wellness Programs<br />
+              <input
+                type="checkbox"
+                name="healthcare_needs"
+                value="chronic_condition_management"
+              />
+              Chronic Condition Management
+            </td>
+          </tr>
+          <tr>
+            <td>Known Allergies</td>
+            <td colspan="3">
+              <input type="checkbox" name="allergies" value="pollen" /> Pollen
+              <input type="checkbox" name="allergies" value="dust" /> Dust
+              <input type="checkbox" name="allergies" value="peanuts" /> Peanuts
+              <input type="checkbox" name="allergies" value="shellfish" />
+              Shellfish
+            </td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>Overall Health Scale</td>
+            <td colspan="3">
+              <input
+                type="range"
+                name="health"
+                id="healthScale"
+                min="1"
+                max="10"
+                value="5"
+                oninput="updateHealthValue()"
+              />
+              <span class="health-value" id="healthValue">5</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <button type="button" onclick="window.location.reload()">
+                Clear And Start Over
+              </button>
+            </td>
+            <td colspan="2">
+              <button type="button" onclick="displayReview()">Review</button>
+              <input type="submit" value="Submit" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <div id="reviewSection" class="review-section">
+      <h3>Review Your Information</h3>
+      <div id="reviewContent"></div>
+      <button onclick="hideReview()">Edit Information</button>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>

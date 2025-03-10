@@ -1,0 +1,386 @@
+/* Main Styles for Health First Solutions */
+
+/* Global Styles & Variables */
+:root {
+  --primary: #a05dcc;
+  --primary-dark: #1ec574;
+  --secondary: #b3ce7e;
+  --secondary-dark: #488c4b;
+  --accent: #ff43c7;
+  --light-bg: #54bd8e;
+  --light-gray: #e9ecef;
+  --medium-gray: #adb5bd;
+  --dark-gray: #495057;
+  --text: #333;
+  --white: #fff;
+  --error: #f44336;
+  --success: #4caf50;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--light-bg);
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* Banner Styles */
+.banner {
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
+  color: var(--white);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.banner h1 {
+  font-size: 2.2rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.banner .tagline {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.banner h4 {
+  font-size: 0.9rem;
+  font-weight: normal;
+  margin-top: 0.5rem;
+}
+
+.logo {
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+/* User Banner */
+.user-banner {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Form Container */
+.form {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Form Table Styles */
+.formtable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.formtable th {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 15px;
+  text-align: center;
+}
+
+.formtable tr:nth-child(even) {
+  background-color: var(--light-bg);
+}
+
+.formtable td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.formtable td:first-child {
+  width: 180px;
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(42, 125, 225, 0.25);
+  outline: none;
+}
+
+/* Password Wrapper */
+.password-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  flex: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.password-wrapper button {
+  background-color: var(--light-gray);
+  border: 1px solid var(--medium-gray);
+  border-left: none;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  transition: background-color 0.3s;
+}
+
+.password-wrapper button:hover {
+  background-color: var(--medium-gray);
+}
+
+/* Checkboxes and Radio Buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Labels for checkboxes and radio buttons */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+/* Health Scale */
+input[type="range"] {
+  width: 100%;
+  max-width: 300px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.health-value {
+  background-color: var(--primary);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Buttons */
+button,
+input[type="submit"] {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+button:active,
+input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+button[type="button"] {
+  background-color: var(--medium-gray);
+}
+
+button[type="button"]:hover {
+  background-color: var(--dark-gray);
+}
+
+input[type="submit"] {
+  background-color: var(--secondary);
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"]:hover {
+  background-color: var(--secondary-dark);
+}
+
+.review-section {
+  display: none;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.review-section h3 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.review-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.review-list li {
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--light-gray);
+  display: flex;
+  align-items: center;
+}
+
+.review-list li:last-child {
+  border-bottom: none;
+}
+
+.review-list li:nth-child(odd) {
+  background-color: var(--light-bg);
+}
+
+.review-list li strong {
+  min-width: 200px;
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.review-section button {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 12px 25px;
+}
+
+/* Error Messages */
+.error-message {
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form {
+    margin: 0 10px;
+  }
+
+  .formtable td:first-child {
+    width: 140px;
+  }
+
+  .formtable td {
+    padding: 8px 10px;
+  }
+
+  .review-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-list li strong {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner h1 {
+    font-size: 1.8rem;
+  }
+
+  .banner .tagline {
+    font-size: 1rem;
+  }
+
+  .formtable td:first-child {
+    width: 100px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.review-section {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Remember Me and Not Me Checkbox styling */
+#rememberMe,
+#notUserCheckbox {
+  margin-right: 5px;
+}
+
+/* Tooltip styling */
+[title] {
+  position: relative;
+  cursor: help;
+}
+
+/* Additional helper classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
