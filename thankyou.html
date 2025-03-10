@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health First Solutions - Registration Complete</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="thankyou.css" />
+  </head>
+  <body>
+    <div class="banner">
+      <img src="./logo.png" alt="company logo" class="logo" />
+      <h1>Health First Solutions</h1>
+      <div class="tagline">
+        Providing Compassionate and Reliable Healthcare Services
+      </div>
+      <h4>Date: <span id="current-date"></span></h4>
+    </div>
+
+    <div class="thank-you-container">
+      <div class="thank-you-card">
+        <div class="check-mark">
+          <svg viewBox="0 0 50 50">
+            <circle
+              cx="25"
+              cy="25"
+              r="20"
+              fill="none"
+              stroke="#4CAF50"
+              stroke-width="2"
+            />
+            <path
+              d="M15 25 L23 32 L35 18"
+              stroke="#4CAF50"
+              stroke-width="3"
+              fill="none"
+            />
+          </svg>
+        </div>
+        <h2>Thank You!</h2>
+        <p>
+          Your registration with Health First Solutions has been successfully
+          completed.
+        </p>
+
+        <div class="next-steps">
+          <h3>What's Next?</h3>
+          <ul>
+            <li>Our team will review your information</li>
+            <li>We will get back to soon</li>
+          </ul>
+        </div>
+        <div class="button-container">
+          <a href="index.html" class="btn-return">Return to Homepage</a>
+        </div>
+        <p class="ref-number">
+          Reference Number: <span id="reference-id">HF-</span>
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Health First Solutions. All Rights Reserved.</p>
+      <p class="footer-links">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
+        <a href="#">Contact Us</a>
+      </p>
+    </footer>
+
+    <script>
+      // Display current date
+      document.getElementById("current-date").innerHTML =
+        new Date().toLocaleDateString();
+
+      // Generate a random reference number
+      const generateReference = () => {
+        const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+        const randomNum = Math.floor(Math.random() * 10000)
+          .toString()
+          .padStart(4, "0");
+        return `HF-${dateStr}-${randomNum}`;
+      };
+
+      document.getElementById("reference-id").textContent = generateReference();
+    </script>
+  </body>
+</html>
